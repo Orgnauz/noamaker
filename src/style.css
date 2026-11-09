@@ -523,3 +523,21 @@ html { scrollbar-color: var(--navy) var(--cream-2); }
   .cart-bar:not([hidden]) { animation: none; }
   .drawer { transition-duration: 0ms; }
 }
+
+/* ---------- image loading: hidden until fully loaded, then fade in ---------- */
+img { opacity: 0; transition: opacity 360ms var(--ease-out); }
+img.is-loaded { opacity: 1; }
+/* soft printing-layer shimmer while a product / story image is still loading */
+.card-media, .chapter-art, .ci-thumb {
+  background-color: var(--cream-2);
+  background-image: repeating-linear-gradient(180deg, rgba(255,255,255,.55) 0 3px, transparent 3px 9px);
+}
+.card-media:not(:has(img.is-loaded)), .chapter-art:not(:has(img.is-loaded)) {
+  animation: imgWait 1.4s ease-in-out infinite;
+}
+@keyframes imgWait { 50% { background-color: #ffe2bd; } }
+.card-media:has(img.is-loaded), .chapter-art:has(img.is-loaded) { background-image: none; }
+@media (prefers-reduced-motion: reduce) {
+  img { transition: none; }
+  .card-media, .chapter-art { animation: none !important; }
+}

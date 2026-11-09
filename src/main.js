@@ -20,6 +20,20 @@ if (heroVideo) {
   if (reduceMotion) heroVideo.removeAttribute('autoplay');
 }
 
+/* ---------- show images only once fully loaded (no half-painted / white flashes) ---------- */
+function markLoaded(img) { img.classList.add('is-loaded'); }
+function reveal(img) {
+  // decode() waits until the image is ready to paint in one go
+  if (img.decode) img.decode().catch(() => {}).finally(() => markLoaded(img));
+  else markLoaded(img);
+}
+document.addEventListener('load', (e) => { if (e.target.tagName === 'IMG') reveal(e.target); }, true);
+function revealCached(root = document) {
+  root.querySelectorAll('img:not(.is-loaded)').forEach((img) => {
+    if (img.complete && img.naturalWidth) reveal(img);
+  });
+}
+
 /* ---------- image fallbacks (art not downloaded yet) ---------- */
 function fallbackTo(img, emoji) {
   const box = document.createElement('span');
@@ -48,10 +62,11 @@ function renderCats() {
   const counts = products.reduce((m, p) => ((m[p.category] = (m[p.category] || 0) + 1), m), {});
   $('#cats').innerHTML = CATEGORIES.map((c) => `
     <button class="cat ${c.id === state.cat ? 'active' : ''}" role="tab" aria-selected="${c.id === state.cat}" data-cat="${c.id}">
-      <span class="cat-art"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" /></span>
+      <span class="cat-art"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" decoding="async" /></span>
       <span class="cat-label">${c.label}</span>
       <span class="cat-count">${c.id === 'all' ? products.length : counts[c.id] || 0}</span>
     </button>`).join('');
+  revealCached($('#cats'));
 }
 $('#cats').addEventListener('click', (e) => {
   const b = e.target.closest('.cat');
@@ -75,8 +90,8 @@ function filtered() {
 function card(p) {
   const c = catOf(p.category);
   const media = p.image
-    ? `<img src="${p.image}" alt="${p.name}" loading="lazy" data-fallback="${c.emoji}" />`
-    : `<div class="ph"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" /><span>תמונה בקרוב</span></div>`;
+    ? `<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" data-fallback="${c.emoji}" />`
+    : `<div class="ph"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" decoding="async" /><span>תמונה בקרוב</span></div>`;
   const inCart = cart[p.sku] || 0;
   return `
   <article class="card" data-sku="${p.sku}">
@@ -100,6 +115,7 @@ function renderGrid(animate = false) {
     ? list.map(card).join('')
     : `<div class="empty"><img src="/assets/characters/noam-apron.webp" alt="" /><p>לא מצאתי מוצר כזה… אבל אולי אני יכול להדפיס אותו? שלחו לי הודעה!</p></div>`;
   $('#resultsCount').textContent = `${list.length} מוצרים`;
+  revealCached($('#grid'));
   if (animate && !reduceMotion) {
     gsap.from('#grid .card', { y: 30, opacity: 0, duration: 0.45, stagger: 0.03, ease: 'back.out(1.6)' });
   }
@@ -166,7 +182,7 @@ function renderCart() {
   $('#drawerFoot').hidden = items.length === 0;
   $('#cartList').innerHTML = items.map((i) => `
     <li class="cart-item">
-      <img class="ci-thumb" src="${i.image || catOf(i.category).art}" alt="" loading="lazy" />
+      <img class="ci-thumb" src="${i.image || catOf(i.category).art}" alt="" loading="lazy" decoding="async" />
       <div class="ci-info"><strong>${i.name}</strong><small>${ils(i.price)} ליחידה</small></div>
       <div class="qty">
         <button data-q="${i.sku}" data-d="1" aria-label="הוספת יחידה">+</button>
@@ -174,6 +190,7 @@ function renderCart() {
         <button data-q="${i.sku}" data-d="-1" aria-label="הורדת יחידה">−</button>
       </div>
     </li>`).join('');
+  revealCached($('#cartList'));
 }
 $('#cartList').addEventListener('click', (e) => {
   const b = e.target.closest('[data-q]');
@@ -304,6 +321,7 @@ function animate() {
 }
 
 /* ---------- boot ---------- */
+revealCached();
 renderCats();
 renderGrid();
 renderCart();
