@@ -541,3 +541,10 @@ img.is-loaded { opacity: 1; }
   img { transition: none; }
   .card-media, .chapter-art { animation: none !important; }
 }
+
+/* ---------- hero: poster first, video swaps in only when playing ---------- */
+.hero-poster, .hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-media video { opacity: 0; transition: opacity 600ms var(--ease-out); }
+.hero-media video.is-ready { opacity: 1; }
+.hero-media { background: var(--cream-2); }
+@media (max-width: 760px) { .hero-poster, .hero-media video { object-position: 50% 50%; } }

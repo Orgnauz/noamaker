@@ -18,6 +18,10 @@ if (heroVideo) {
   const small = window.matchMedia('(max-width: 760px)').matches;
   heroVideo.src = small ? heroVideo.dataset.srcSmall : heroVideo.dataset.src;
   if (reduceMotion) heroVideo.removeAttribute('autoplay');
+  // keep the (fully loaded) poster image on screen; swap to the video only once it is actually playing
+  const showVideo = () => heroVideo.classList.add('is-ready');
+  heroVideo.addEventListener('playing', showVideo, { once: true });
+  if (reduceMotion) heroVideo.addEventListener('canplaythrough', showVideo, { once: true });
 }
 
 /* ---------- show images only once fully loaded (no half-painted / white flashes) ---------- */
@@ -279,12 +283,12 @@ function animate() {
   // Hero parallax on scroll – desktop only (scrubbed transforms cost frames on phones)
   const mm = gsap.matchMedia();
   mm.add('(min-width: 761px)', () => {
-    gsap.to('.hero-media video', { scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero-media video, .hero-poster', { scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero-copy', { yPercent: -30, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   });
   mm.add('(max-width: 760px)', () => {
     // the framed video "prints" in layer by layer, Noam pops out of it
-    gsap.fromTo('.hero-media', { clipPath: 'inset(100% 0 0 0 round 26px)' }, { clipPath: 'inset(0% 0 0 0 round 26px)', duration: 0.9, ease: 'steps(12)', delay: 0.1 });
+    gsap.from('.hero-media', { y: 16, scale: 0.97, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.1 });
   });
 
   // Section heads
@@ -300,8 +304,6 @@ function animate() {
     const dir = i % 2 ? -1 : 1;
     gsap.from(ch.querySelector('.chapter-art'), { x: 120 * dir, rotate: 6 * dir, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: ch, start: 'top 75%' } });
     gsap.from(ch.querySelectorAll('.chapter-copy > *'), { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: ch, start: 'top 70%' } });
-    // "layer by layer" reveal of the art, like a 3D print
-    gsap.fromTo(ch.querySelector('.chapter-art img'), { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', ease: 'steps(14)', duration: 1.1, scrollTrigger: { trigger: ch, start: 'top 72%' } });
   });
 
   // How-to-order: dotted path draws, steps pop in

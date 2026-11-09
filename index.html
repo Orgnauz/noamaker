@@ -10,6 +10,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <noscript><style>img { opacity: 1 !important; }</style></noscript>
   <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preload" as="image" href="/assets/hero/hero-poster-v2.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Varela+Round&display=swap" rel="stylesheet" />
@@ -40,7 +41,8 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="hero-media">
-        <video id="heroVideo" data-src="/assets/hero/hero-v2.mp4" data-src-small="/assets/hero/hero-v2-540.mp4" poster="/assets/hero/hero-poster-v2.webp" autoplay muted loop playsinline preload="metadata" aria-label="נועם מדפיס מוצר ומביא אותו לשכנה בקיבוץ"></video>
+        <img class="hero-poster" src="/assets/hero/hero-poster-v2.webp" alt="" fetchpriority="high" decoding="async" />
+        <video id="heroVideo" data-src="/assets/hero/hero-v2.mp4" data-src-small="/assets/hero/hero-v2-540.mp4" autoplay muted loop playsinline preload="auto" aria-label="נועם מדפיס מוצר ומביא אותו לשכנה בקיבוץ"></video>
         <div class="hero-fade"></div>
       </div>
       <div class="hero-copy">
