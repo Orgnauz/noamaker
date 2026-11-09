@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "fetch-assets": "node scripts/fetch-assets.mjs",
-    "products": "python scripts/build-products.py"
+    "products": "python scripts/build-products.py",
+    "photo-prompts": "python scripts/build-photo-prompts.py"
   },
   "dependencies": {
     "gsap": "^3.13.0"
