@@ -71,7 +71,7 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 155,
-  "printHours": 12,
+  "printHours": 12.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-007.webp"
@@ -159,7 +159,7 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 130,
-  "printHours": 10,
+  "printHours": 10.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-015.webp"
@@ -313,7 +313,7 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 40,
-  "printHours": 4,
+  "printHours": 4.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-030.webp"
@@ -444,8 +444,8 @@
   "name": "דרקון קריסטל מפרקי",
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
-  "price": 155,
-  "printHours": 15.4,
+  "price": 75,
+  "printHours": 6.3,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-045.webp"
@@ -455,8 +455,8 @@
   "name": "מדף כניסה ומחזיק מפתחות LineDock",
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
-  "price": 170,
-  "printHours": 8.3,
+  "price": 165,
+  "printHours": 7.6,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-046.webp"
@@ -533,7 +533,7 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 105,
-  "printHours": 8,
+  "printHours": 8.0,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-053.webp"
@@ -544,7 +544,7 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 30,
-  "printHours": 1,
+  "printHours": 1.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-054.webp"
@@ -565,8 +565,8 @@
   "name": "תפוח פידג'ט מסתובב",
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
-  "price": 60,
-  "printHours": 4.4,
+  "price": 55,
+  "printHours": 4.3,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-058.webp"
@@ -576,8 +576,8 @@
   "name": "טריגון גמיש",
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
-  "price": 45,
-  "printHours": 3,
+  "price": 40,
+  "printHours": 3.1,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-059.webp"
@@ -598,8 +598,8 @@
   "name": "נחש מפרקי Zephyra",
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
-  "price": 110,
-  "printHours": 11.2,
+  "price": 95,
+  "printHours": 9.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-061.webp"
@@ -610,7 +610,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 3,
+  "printHours": 3.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-062.webp"
@@ -709,7 +709,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 1,
+  "printHours": 1.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-073.webp"
@@ -808,7 +808,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 0.7,
+  "printHours": 1.0,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-082.webp"
@@ -819,7 +819,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 60,
-  "printHours": 3.3,
+  "printHours": 2.8,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-083.webp"
@@ -840,8 +840,8 @@
   "name": "דרקון שלג מפרקי",
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
-  "price": 55,
-  "printHours": 4.5,
+  "price": 40,
+  "printHours": 2.7,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-085.webp"
@@ -896,7 +896,7 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 185,
-  "printHours": 9,
+  "printHours": 9.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-091.webp"
@@ -950,8 +950,8 @@
   "name": "מיני קליקר כופתאות",
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
-  "price": 35,
-  "printHours": 1.8,
+  "price": 25,
+  "printHours": 0.7,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-096.webp"
@@ -1072,7 +1072,7 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 180,
-  "printHours": 11,
+  "printHours": 11.0,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-107.webp"
@@ -1098,16 +1098,5 @@
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-109.webp"
- },
- {
-  "sku": "ORG-110",
-  "name": "קליקר מקלדת",
-  "subcategory": "צעצועי פידג'ט",
-  "category": "fidget",
-  "price": 20,
-  "printHours": 0.3,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
-  "image": "/assets/products/ORG-110.webp"
  }
 ]
