@@ -71,7 +71,7 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 155,
-  "printHours": 12.0,
+  "printHours": 12,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-007.webp"
@@ -159,7 +159,7 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 130,
-  "printHours": 10.0,
+  "printHours": 10,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-015.webp"
@@ -313,7 +313,7 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 40,
-  "printHours": 4.0,
+  "printHours": 4,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-030.webp"
@@ -533,7 +533,7 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 105,
-  "printHours": 8.0,
+  "printHours": 8,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-053.webp"
@@ -544,7 +544,7 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 30,
-  "printHours": 1.0,
+  "printHours": 1,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-054.webp"
@@ -577,7 +577,7 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 45,
-  "printHours": 3.0,
+  "printHours": 3,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-059.webp"
@@ -610,7 +610,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 3.0,
+  "printHours": 3,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-062.webp"
@@ -709,7 +709,7 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 1.0,
+  "printHours": 1,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-073.webp"
@@ -896,7 +896,7 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 185,
-  "printHours": 9.0,
+  "printHours": 9,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
   "image": "/assets/products/ORG-091.webp"
@@ -943,7 +943,7 @@
   "printHours": 1.3,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-095.webp"
  },
  {
   "sku": "ORG-096",
@@ -954,7 +954,7 @@
   "printHours": 1.8,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-096.webp"
  },
  {
   "sku": "ORG-097",
@@ -965,7 +965,7 @@
   "printHours": 3.5,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-097.webp"
  },
  {
   "sku": "ORG-098",
@@ -976,7 +976,7 @@
   "printHours": 14.2,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-098.webp"
  },
  {
   "sku": "ORG-099",
@@ -987,7 +987,7 @@
   "printHours": 8.7,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-099.webp"
  },
  {
   "sku": "ORG-100",
@@ -998,7 +998,7 @@
   "printHours": 16.2,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-100.webp"
  },
  {
   "sku": "ORG-101",
@@ -1009,7 +1009,7 @@
   "printHours": 0.7,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-101.webp"
  },
  {
   "sku": "ORG-102",
@@ -1020,7 +1020,7 @@
   "printHours": 7.2,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-102.webp"
  },
  {
   "sku": "ORG-103",
@@ -1031,7 +1031,7 @@
   "printHours": 18.9,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-103.webp"
  },
  {
   "sku": "ORG-104",
@@ -1042,7 +1042,7 @@
   "printHours": 3.3,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-104.webp"
  },
  {
   "sku": "ORG-105",
@@ -1053,7 +1053,7 @@
   "printHours": 8.4,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-105.webp"
  },
  {
   "sku": "ORG-106",
@@ -1064,7 +1064,7 @@
   "printHours": 26.4,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-106.webp"
  },
  {
   "sku": "ORG-107",
@@ -1072,10 +1072,10 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 180,
-  "printHours": 11.0,
+  "printHours": 11,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-107.webp"
  },
  {
   "sku": "ORG-108",
@@ -1086,7 +1086,7 @@
   "printHours": 3.5,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-108.webp"
  },
  {
   "sku": "ORG-109",
@@ -1097,7 +1097,7 @@
   "printHours": 0.8,
   "license": "Standard Digital File License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-109.webp"
  },
  {
   "sku": "ORG-110",
@@ -1108,6 +1108,6 @@
   "printHours": 0.3,
   "license": "MakerWorld Exclusive License",
   "needsCommercialLicense": true,
-  "image": null
+  "image": "/assets/products/ORG-110.webp"
  }
 ]
