@@ -1,0 +1,20 @@
+{
+  "name": "noamaker",
+  "private": true,
+  "version": "0.1.0",
+  "description": "נועמייקר – החנות של נועם למוצרים בהדפסת תלת-ממד",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "fetch-assets": "node scripts/fetch-assets.mjs",
+    "products": "python scripts/build-products.py"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}

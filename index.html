@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>נועמייקר | הסדנה של נועם</title>
+  <meta name="description" content="נועמייקר – הסדנה של נועם. אני בן 11, מדפיס בתלת־ממד דברים מגניבים לבית ולילדים ומביא עד הדלת בקיבוץ." />
+  <!-- Private-ish shop for the kibbutz: keep it out of search engines -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Varela+Round&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="topbar" id="topbar">
+    <a href="#top" class="brand" aria-label="נועמייקר – לדף הבית">
+      <img src="/assets/brand/logo-sticker.webp" alt="נועמייקר" width="64" height="64" />
+      <span class="brand-text">
+        <strong>נועמייקר</strong>
+        <small>הסדנה של נועם</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="ניווט ראשי">
+      <a href="#story">הסיפור שלי</a>
+      <a href="#how">איך מזמינים</a>
+      <a href="#shop">החנות</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen" aria-label="פתיחת סל הקניות">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.5h7.7a2 2 0 0 0 2-1.5L21 7H6.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.6" fill="currentColor"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/></svg>
+      <span>הסל שלי</span>
+      <b class="cart-count" id="cartCount">0</b>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-media">
+        <video id="heroVideo" src="/assets/hero/hero.mp4" poster="/assets/hero/hero-poster.webp" autoplay muted loop playsinline></video>
+        <div class="hero-fade"></div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="wave">👋</span> היי, אני נועם!</p>
+        <h1 class="hero-title">
+          <span class="line">אני בן 11,</span>
+          <span class="line">וזה <em>העסק הראשון</em></span>
+          <span class="line">שלי.</span>
+        </h1>
+        <p class="hero-sub">ב<strong>נועמייקר</strong> אני מדפיס בתלת־ממד דברים מגניבים לבית ולילדים – ומביא אותם בעצמי עד הדלת שלכם בקיבוץ.</p>
+        <div class="hero-ctas">
+          <a href="#shop" class="btn btn-primary">לחנות של נועם</a>
+          <a href="#story" class="btn btn-ghost">איך הכל התחיל?</a>
+        </div>
+      </div>
+      <img class="hero-char" src="/assets/characters/noam-hoodie.webp" alt="נועם בקפוצ'ון כתום מרים אגודל" />
+      <a href="#story" class="scroll-hint" aria-label="גללו למטה">
+        <span>גללו</span><i></i>
+      </a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>מודפס בתלת־ממד ⬢ עשוי באהבה ⬢ משלוח עד הבית בקיבוץ ⬢ משלמים בפייבוקס ⬢ כל מוצר מודפס במיוחד בשבילכם ⬢</span>
+        <span>מודפס בתלת־ממד ⬢ עשוי באהבה ⬢ משלוח עד הבית בקיבוץ ⬢ משלמים בפייבוקס ⬢ כל מוצר מודפס במיוחד בשבילכם ⬢</span>
+      </div>
+    </div>
+
+    <!-- ============ STORY ============ -->
+    <section class="story" id="story">
+      <header class="section-head">
+        <p class="kicker">הסיפור שלי</p>
+        <h2>איך ילד אחד ומדפסת אחת<br />הפכו לעסק</h2>
+      </header>
+
+      <div class="story-track">
+        <div class="print-line" aria-hidden="true">
+          <div class="print-line-fill" id="printFill"></div>
+          <div class="nozzle" id="nozzle">
+            <svg viewBox="0 0 40 48"><rect x="6" y="0" width="28" height="22" rx="5" fill="#1f2a5a"/><rect x="10" y="4" width="20" height="6" rx="2" fill="#ff7a1a"/><path d="M14 22h12l-4 14h-4z" fill="#1f2a5a"/><circle cx="20" cy="42" r="4" fill="#ff7a1a"/></svg>
+          </div>
+        </div>
+
+        <article class="chapter" data-chapter="1">
+          <figure class="chapter-art"><img src="/assets/story/story-1.png" alt="נועם פותח קרטון עם מדפסת תלת־ממד חדשה" loading="lazy" data-fallback="📦" /></figure>
+          <div class="chapter-copy">
+            <span class="chapter-num">01</span>
+            <h3>הכל התחיל מקופסה אחת</h3>
+            <p>יום אחד הגיעה הביתה מדפסת תלת־ממד. פתחתי את הקרטון ולא האמנתי – אפשר לבנות <strong>כל דבר</strong> שאני מדמיין, שכבה אחרי שכבה.</p>
+          </div>
+        </article>
+
+        <article class="chapter" data-chapter="2">
+          <figure class="chapter-art"><img src="/assets/story/story-2.png" alt="נועם צוחק ליד הדפסה שלא הצליחה" loading="lazy" data-fallback="🍝" /></figure>
+          <div class="chapter-copy">
+            <span class="chapter-num">02</span>
+            <h3>למדתי מהטעויות (והיו הרבה)</h3>
+            <p>ההדפסות הראשונות יצאו… ספגטי 😅. למדתי לבד על פילמנטים, טמפרטורות והגדרות – וכל הדפסה יצאה קצת יותר טוב מהקודמת.</p>
+          </div>
+        </article>
+
+        <article class="chapter" data-chapter="3">
+          <figure class="chapter-art"><img src="/assets/story/story-3.png" alt="נועם מחזיק בגאווה דרקון מודפס" loading="lazy" data-fallback="🐉" /></figure>
+          <div class="chapter-copy">
+            <span class="chapter-num">03</span>
+            <h3>ההדפסה המושלמת הראשונה</h3>
+            <p>ואז זה קרה: דרקון מפרקי שזז בדיוק כמו שצריך. כולם רצו אחד כזה – ושם הבנתי שאולי זה יכול להיות עסק אמיתי.</p>
+          </div>
+        </article>
+
+        <article class="chapter" data-chapter="4">
+          <figure class="chapter-art"><img src="/assets/story/story-4.png" alt="נועם עומד ליד דוכן מוצרים מודפסים בקיבוץ" loading="lazy" data-fallback="🏡" /></figure>
+          <div class="chapter-copy">
+            <span class="chapter-num">04</span>
+            <h3>וככה נולד נועמייקר</h3>
+            <p>היום אני מדפיס קערות, מארגנים, מחזיקי מפתחות ופידג'טים – הכל בהזמנה אישית, ומביא בעצמי לכל בית בקיבוץ. <strong>זה העסק הראשון שלי</strong>, ואני ממש גאה בו.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO ORDER ============ -->
+    <section class="how" id="how">
+      <header class="section-head light">
+        <p class="kicker">איך מזמינים?</p>
+        <h2>4 צעדים – ומהמדפסת שלי<br />לדלת שלכם</h2>
+      </header>
+
+      <div class="steps">
+        <svg class="steps-path" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+          <path id="stepsPath" d="M1180 110 C 1000 10, 860 190, 640 100 S 300 10, 20 110" fill="none" stroke="#ffd29e" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 16"/>
+        </svg>
+
+        <div class="step">
+          <div class="step-char"><img src="/assets/characters/noam-wave.webp" alt="נועם מנופף לשלום" loading="lazy" /></div>
+          <span class="step-num">1</span>
+          <h3>בוחרים</h3>
+          <p>מטיילים בחנות, בוחרים מה שאוהבים ומוסיפים לסל.</p>
+        </div>
+        <div class="step">
+          <div class="step-char"><img src="/assets/characters/noam-hoodie.webp" alt="נועם מרים אגודל" loading="lazy" /></div>
+          <span class="step-num">2</span>
+          <h3>שולחים ומשלמים</h3>
+          <p>ההזמנה נשלחת אליי בוואטסאפ, ומשלמים בקלות ב<strong>פייבוקס יאנג</strong>.</p>
+        </div>
+        <div class="step">
+          <div class="step-char"><img src="/assets/characters/noam-apron.webp" alt="נועם בסינר סדנה מחזיק צעצוע מודפס" loading="lazy" /></div>
+          <span class="step-num">3</span>
+          <h3>אני מדפיס</h3>
+          <p>אני מדפיס את המוצר במיוחד בשבילכם, בודק שהכל מושלם ואורז.</p>
+        </div>
+        <div class="step">
+          <div class="step-char"><img src="/assets/characters/noam-bike.webp" alt="נועם על אופניים עם חבילה בסל" loading="lazy" /></div>
+          <span class="step-num">4</span>
+          <h3>מביא עד הבית</h3>
+          <p>עולה על האופניים ומביא לכם את ההזמנה עד הדלת בקיבוץ. 🚲</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHOP ============ -->
+    <section class="shop" id="shop">
+      <header class="section-head">
+        <p class="kicker">החנות</p>
+        <h2>מה תרצו שאדפיס לכם?</h2>
+        <p class="section-sub">כל המוצרים מודפסים לפי הזמנה. זמן הכנה רגיל: 2–5 ימים.</p>
+      </header>
+
+      <div class="cats" id="cats" role="tablist" aria-label="קטגוריות"></div>
+
+      <div class="shop-tools">
+        <label class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <input type="search" id="search" placeholder="חיפוש מוצר…" />
+        </label>
+        <label class="sort">
+          מיון:
+          <select id="sort">
+            <option value="default">מומלץ</option>
+            <option value="price-asc">מחיר: מהזול ליקר</option>
+            <option value="price-desc">מחיר: מהיקר לזול</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="results-count" id="resultsCount" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- ============ DELIVERY ============ -->
+    <section class="delivery">
+      <img src="/assets/characters/noam-bike.webp" alt="" class="delivery-bike" aria-hidden="true" />
+      <div>
+        <h2>כרגע משלוחים רק בקיבוץ 🏡</h2>
+        <p>אני מביא כל הזמנה בעצמי, אחרי בית הספר ובסופי שבוע. גרים מחוץ לקיבוץ? שלחו לי הודעה ונראה מה אפשר לעשות!</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <img src="/assets/brand/logo-sticker.webp" alt="נועמייקר" width="110" height="110" loading="lazy" />
+    <p class="footer-slogan">נועמייקר · הסדנה של נועם · העסק הראשון שלי</p>
+    <div class="footer-links">
+      <a id="footerWa" target="_blank" rel="noopener">💬 שלחו לי וואטסאפ</a>
+      <span>💳 תשלום בפייבוקס יאנג</span>
+    </div>
+    <p class="footer-small">© <span id="year"></span> נועמייקר. כל המוצרים מודפסים בתלת־ממד בעבודת יד.</p>
+  </footer>
+
+  <!-- ============ CART DRAWER ============ -->
+  <div class="drawer-backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="סל הקניות" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>הסל שלי</h2>
+      <button class="icon-btn" id="cartClose" aria-label="סגירת הסל">✕</button>
+    </div>
+    <div class="drawer-body">
+      <ul class="cart-list" id="cartList"></ul>
+      <div class="cart-empty" id="cartEmpty">
+        <img src="/assets/characters/noam-wave.webp" alt="" aria-hidden="true" />
+        <p>הסל עדיין ריק.<br />בואו נמצא משהו מגניב!</p>
+      </div>
+
+      <form class="order-form" id="orderForm" novalidate>
+        <h3>פרטים למשלוח</h3>
+        <label>שם מלא<input name="name" required autocomplete="name" /></label>
+        <label>כתובת בקיבוץ (שכונה / מספר בית)<input name="address" required autocomplete="street-address" /></label>
+        <label>טלפון<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" /></label>
+        <label>הערות (צבע מועדף, מתנה, וכו')<textarea name="notes" rows="2"></textarea></label>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+      </form>
+    </div>
+    <div class="drawer-foot" id="drawerFoot">
+      <div class="total"><span>סה״כ לתשלום</span><strong id="cartTotal">0 ₪</strong></div>
+      <p class="pay-note">התשלום ב<strong>פייבוקס יאנג</strong> לנועם, אחרי שאאשר את ההזמנה בוואטסאפ.</p>
+      <button class="btn btn-wa" id="sendOrder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        שליחת ההזמנה בוואטסאפ
+      </button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
