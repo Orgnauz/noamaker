@@ -8,6 +8,9 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_3HObPkBWrvMNutBv7aOFDBewL1J/';
 
 const ASSETS = {
+  // Hero animation v2 (fixed hands)
+  'public/assets/hero/hero-v2.mp4': 'hf_20261109_115734_305fc616-5b0a-4257-ac59-4526eb2007f5.mp4',
+  'public/assets/hero/hero-poster-v2.png': 'hf_20261109_115623_fd6bcf83-ea4d-4441-ab15-8ce346cf0a81.png',
   // Story chapters
   'public/assets/story/story-1.png': 'hf_20261109_092354_dac65036-0b51-4078-9273-efed92896d7b.png',
   'public/assets/story/story-2.png': 'hf_20261109_092528_144aaeeb-42b4-462d-bff9-10ca2532c9a4.png',
