@@ -2,7 +2,8 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff6e8" />
   <title>נועמייקר | הסדנה של נועם</title>
   <meta name="description" content="נועמייקר – הסדנה של נועם. אני בן 11, מדפיס בתלת־ממד דברים מגניבים לבית ולילדים ומביא עד הדלת בקיבוץ." />
   <!-- Private-ish shop for the kibbutz: keep it out of search engines -->
@@ -38,7 +39,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
       <div class="hero-media">
-        <video id="heroVideo" src="/assets/hero/hero-v2.mp4" poster="/assets/hero/hero-poster-v2.png" autoplay muted loop playsinline></video>
+        <video id="heroVideo" data-src="/assets/hero/hero-v2.mp4" data-src-small="/assets/hero/hero-v2-540.mp4" poster="/assets/hero/hero-poster-v2.webp" autoplay muted loop playsinline preload="metadata" aria-label="נועם מדפיס מוצר ומביא אותו לשכנה בקיבוץ"></video>
         <div class="hero-fade"></div>
       </div>
       <div class="hero-copy">
@@ -71,8 +72,7 @@
     <!-- ============ STORY ============ -->
     <section class="story" id="story">
       <header class="section-head">
-        <p class="kicker">הסיפור שלי</p>
-        <h2>איך ילד אחד ומדפסת אחת<br />הפכו לעסק</h2>
+        <h2>איך ילד אחד ומדפסת אחת הפכו לעסק</h2>
       </header>
 
       <div class="story-track">
@@ -84,7 +84,7 @@
         </div>
 
         <article class="chapter" data-chapter="1">
-          <figure class="chapter-art"><img src="/assets/story/story-1.png" alt="נועם פותח קרטון עם מדפסת תלת־ממד חדשה" loading="lazy" data-fallback="📦" /></figure>
+          <figure class="chapter-art"><img src="/assets/story/story-1.webp" alt="נועם פותח קרטון עם מדפסת תלת־ממד חדשה" loading="lazy" data-fallback="📦" /></figure>
           <div class="chapter-copy">
             <span class="chapter-num">01</span>
             <h3>הכל התחיל מקופסה אחת</h3>
@@ -93,7 +93,7 @@
         </article>
 
         <article class="chapter" data-chapter="2">
-          <figure class="chapter-art"><img src="/assets/story/story-2.png" alt="נועם צוחק ליד הדפסה שלא הצליחה" loading="lazy" data-fallback="🍝" /></figure>
+          <figure class="chapter-art"><img src="/assets/story/story-2.webp" alt="נועם צוחק ליד הדפסה שלא הצליחה" loading="lazy" data-fallback="🍝" /></figure>
           <div class="chapter-copy">
             <span class="chapter-num">02</span>
             <h3>למדתי מהטעויות (והיו הרבה)</h3>
@@ -102,7 +102,7 @@
         </article>
 
         <article class="chapter" data-chapter="3">
-          <figure class="chapter-art"><img src="/assets/story/story-3.png" alt="נועם מחזיק בגאווה דרקון מודפס" loading="lazy" data-fallback="🐉" /></figure>
+          <figure class="chapter-art"><img src="/assets/story/story-3.webp" alt="נועם מחזיק בגאווה דרקון מודפס" loading="lazy" data-fallback="🐉" /></figure>
           <div class="chapter-copy">
             <span class="chapter-num">03</span>
             <h3>ההדפסה המושלמת הראשונה</h3>
@@ -111,7 +111,7 @@
         </article>
 
         <article class="chapter" data-chapter="4">
-          <figure class="chapter-art"><img src="/assets/story/story-4.png" alt="נועם עומד ליד דוכן מוצרים מודפסים בקיבוץ" loading="lazy" data-fallback="🏡" /></figure>
+          <figure class="chapter-art"><img src="/assets/story/story-4.webp" alt="נועם עומד ליד דוכן מוצרים מודפסים בקיבוץ" loading="lazy" data-fallback="🏡" /></figure>
           <div class="chapter-copy">
             <span class="chapter-num">04</span>
             <h3>וככה נולד נועמייקר</h3>
@@ -124,8 +124,7 @@
     <!-- ============ HOW TO ORDER ============ -->
     <section class="how" id="how">
       <header class="section-head light">
-        <p class="kicker">איך מזמינים?</p>
-        <h2>4 צעדים – ומהמדפסת שלי<br />לדלת שלכם</h2>
+        <h2>4 צעדים – ומהמדפסת שלי לדלת שלכם</h2>
       </header>
 
       <div class="steps">
@@ -163,7 +162,6 @@
     <!-- ============ SHOP ============ -->
     <section class="shop" id="shop">
       <header class="section-head">
-        <p class="kicker">החנות</p>
         <h2>מה תרצו שאדפיס לכם?</h2>
         <p class="section-sub">כל המוצרים מודפסים לפי הזמנה. זמן הכנה רגיל: 2–5 ימים.</p>
       </header>
@@ -213,6 +211,7 @@
   <!-- ============ CART DRAWER ============ -->
   <div class="drawer-backdrop" id="backdrop" hidden></div>
   <aside class="drawer" id="drawer" aria-label="סל הקניות" aria-hidden="true">
+    <span class="drawer-handle" aria-hidden="true"></span>
     <div class="drawer-head">
       <h2>הסל שלי</h2>
       <button class="icon-btn" id="cartClose" aria-label="סגירת הסל">✕</button>
@@ -222,6 +221,7 @@
       <div class="cart-empty" id="cartEmpty">
         <img src="/assets/characters/noam-wave.webp" alt="" aria-hidden="true" />
         <p>הסל עדיין ריק.<br />בואו נמצא משהו מגניב!</p>
+        <button class="btn btn-ghost btn-sm" id="emptyToShop">לחנות</button>
       </div>
 
       <form class="order-form" id="orderForm" novalidate>
@@ -242,6 +242,13 @@
       </button>
     </div>
   </aside>
+
+  <!-- mobile: cart bar in thumb reach -->
+  <button class="cart-bar" id="cartBar" aria-label="מעבר לסל" hidden>
+    <span class="cart-bar-count" id="cartBarCount">0</span>
+    <span class="cart-bar-label">לסל שלי</span>
+    <strong class="cart-bar-total" id="cartBarTotal">0 ₪</strong>
+  </button>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

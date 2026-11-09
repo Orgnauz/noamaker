@@ -7,7 +7,6 @@
 
 ```bash
 npm install
-npm run fetch-assets   # מוריד את איורי הסיפור והקטגוריות מ-Higgsfield (פעם אחת)
 npm run dev            # האתר רץ על http://localhost:5173
 ```
 

@@ -12,6 +12,14 @@ const ils = (n) => `${n.toLocaleString('he-IL')} ₪`;
 const catOf = (id) => CATEGORIES.find((c) => c.id === id) || CATEGORIES[0];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ---------- hero video: light file on small screens ---------- */
+const heroVideo = $('#heroVideo');
+if (heroVideo) {
+  const small = window.matchMedia('(max-width: 760px)').matches;
+  heroVideo.src = small ? heroVideo.dataset.srcSmall : heroVideo.dataset.src;
+  if (reduceMotion) heroVideo.removeAttribute('autoplay');
+}
+
 /* ---------- image fallbacks (art not downloaded yet) ---------- */
 function fallbackTo(img, emoji) {
   const box = document.createElement('span');
@@ -51,6 +59,7 @@ $('#cats').addEventListener('click', (e) => {
   state.cat = b.dataset.cat;
   $$('.cat').forEach((x) => { x.classList.toggle('active', x === b); x.setAttribute('aria-selected', x === b); });
   renderGrid(true);
+  b.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 });
 
 /* ---------- product grid ---------- */
@@ -71,7 +80,7 @@ function card(p) {
   const inCart = cart[p.sku] || 0;
   return `
   <article class="card" data-sku="${p.sku}">
-    <div class="card-media">${media}<span class="tag">${c.emoji} ${p.subcategory}</span></div>
+    <div class="card-media">${media}<span class="tag">${p.subcategory}</span></div>
     <div class="card-body">
       <h3>${p.name}</h3>
       <p class="meta">מודפס במיוחד בשבילכם · ${p.sku}</p>
@@ -147,13 +156,17 @@ function renderCart() {
   const count = items.reduce((n, i) => n + i.qty, 0);
   const total = items.reduce((n, i) => n + i.qty * i.price, 0);
   $('#cartCount').textContent = count;
+  $('#cartBar').hidden = count === 0;
+  $('#cartBarCount').textContent = count;
+  $('#cartBarTotal').textContent = ils(total);
+  document.body.classList.toggle('has-cart', count > 0);
   $('#cartTotal').textContent = ils(total);
   $('#cartEmpty').hidden = items.length > 0;
   $('#orderForm').hidden = items.length === 0;
   $('#drawerFoot').hidden = items.length === 0;
   $('#cartList').innerHTML = items.map((i) => `
     <li class="cart-item">
-      <span class="ci-emoji">${catOf(i.category).emoji}</span>
+      <img class="ci-thumb" src="${i.image || catOf(i.category).art}" alt="" loading="lazy" />
       <div class="ci-info"><strong>${i.name}</strong><small>${ils(i.price)} ליחידה</small></div>
       <div class="qty">
         <button data-q="${i.sku}" data-d="1" aria-label="הוספת יחידה">+</button>
@@ -178,6 +191,8 @@ function closeCart() {
   document.body.classList.remove('lock'); setTimeout(() => (backdrop.hidden = true), 300);
 }
 $('#cartOpen').addEventListener('click', openCart);
+$('#cartBar').addEventListener('click', openCart);
+$('#emptyToShop').addEventListener('click', () => { closeCart(); $('#shop').scrollIntoView({ behavior: 'smooth' }); });
 $('#cartClose').addEventListener('click', closeCart);
 backdrop.addEventListener('click', closeCart);
 document.addEventListener('keydown', (e) => e.key === 'Escape' && closeCart());
@@ -241,13 +256,19 @@ function animate() {
     .from('.hero-title .line', { y: 60, opacity: 0, rotate: -3, duration: 0.7, stagger: 0.12 }, '-=0.2')
     .from('.hero-sub', { y: 20, opacity: 0, duration: 0.5 }, '-=0.3')
     .from('.hero-ctas .btn', { scale: 0.6, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.2')
-    .from('.hero-char', { x: -200, y: 80, rotate: -12, opacity: 0, duration: 1, ease: 'elastic.out(1, 0.6)' }, 0.4);
+    .from('.hero-char', { y: 60, rotate: -10, scale: 0.9, opacity: 0, duration: 0.9, ease: 'elastic.out(1, 0.7)' }, 0.7);
   gsap.to('.wave', { rotate: 18, yoyo: true, repeat: -1, duration: 0.35, transformOrigin: '70% 70%', ease: 'sine.inOut', repeatDelay: 1.6 });
 
-  // Hero parallax on scroll
-  gsap.to('.hero-char', { yPercent: 25, rotate: 6, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.hero-media video', { scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.hero-copy', { yPercent: -30, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  // Hero parallax on scroll – desktop only (scrubbed transforms cost frames on phones)
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 761px)', () => {
+    gsap.to('.hero-media video', { scale: 1.12, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero-copy', { yPercent: -30, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  });
+  mm.add('(max-width: 760px)', () => {
+    // the framed video "prints" in layer by layer, Noam pops out of it
+    gsap.fromTo('.hero-media', { clipPath: 'inset(100% 0 0 0 round 26px)' }, { clipPath: 'inset(0% 0 0 0 round 26px)', duration: 0.9, ease: 'steps(12)', delay: 0.1 });
+  });
 
   // Section heads
   $$('.section-head').forEach((h) => gsap.from(h.children, {
@@ -273,7 +294,7 @@ function animate() {
     gsap.fromTo(path, { strokeDashoffset: len, strokeDasharray: `2 16` }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.steps', start: 'top 75%', end: 'bottom 60%', scrub: 0.5 } });
   }
   $$('.step').forEach((s, i) => {
-    gsap.from(s, { y: 80, opacity: 0, duration: 0.8, delay: i * 0.12, ease: 'back.out(1.5)', scrollTrigger: { trigger: '.steps', start: 'top 72%' } });
+    gsap.from(s, { y: 60, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power4.out', scrollTrigger: { trigger: '.steps', start: 'top 80%' } });
     gsap.to(s.querySelector('.step-char img'), { y: -8, yoyo: true, repeat: -1, duration: 1.4 + i * 0.15, ease: 'sine.inOut' });
   });
 

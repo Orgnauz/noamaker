@@ -8,7 +8,6 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "fetch-assets": "node scripts/fetch-assets.mjs",
     "products": "python scripts/build-products.py",
     "photo-prompts": "python scripts/build-photo-prompts.py"
   },
