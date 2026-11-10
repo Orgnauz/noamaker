@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f2a5a" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ניהול | נועמייקר</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Varela+Round&display=swap" rel="stylesheet" />
+</head>
+<body class="admin">
+  <!-- ============ LOGIN ============ -->
+  <section class="login" id="login" hidden>
+    <form class="login-card" id="loginForm">
+      <img src="/assets/brand/logo-sticker.webp" alt="נועמייקר" width="120" height="120" />
+      <h1>הסדנה של נועם</h1>
+      <p>כניסה לניהול הזמנות וצבעים</p>
+      <label>סיסמה<input type="password" name="password" autocomplete="current-password" required /></label>
+      <p class="form-error" id="loginError" role="alert" hidden></p>
+      <button class="btn btn-primary" type="submit">כניסה</button>
+      <a class="back-link" href="/">← לחנות</a>
+    </form>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <div class="app" id="app" hidden>
+    <header class="a-top">
+      <a href="/" class="brand" aria-label="לחנות">
+        <img src="/assets/brand/logo-sticker.webp" alt="" width="44" height="44" />
+        <span class="brand-text"><strong>נועמייקר</strong><small>ניהול הסדנה</small></span>
+      </a>
+      <nav class="a-tabs" role="tablist" aria-label="אזורי ניהול">
+        <button role="tab" class="a-tab active" data-tab="orders" aria-selected="true">הזמנות <b id="openCount">0</b></button>
+        <button role="tab" class="a-tab" data-tab="colors" aria-selected="false">צבעים</button>
+        <button role="tab" class="a-tab" data-tab="settings" aria-selected="false">הגדרות</button>
+      </nav>
+    </header>
+
+    <main class="a-main">
+      <!-- ORDERS -->
+      <section class="panel" id="panel-orders">
+        <div class="filters" id="filters" role="group" aria-label="סינון לפי סטטוס"></div>
+        <div class="orders" id="orders" aria-live="polite"></div>
+      </section>
+
+      <!-- COLORS -->
+      <section class="panel" id="panel-colors" hidden>
+        <div class="panel-head">
+          <h2>צבעים בסדנה</h2>
+          <p>רק צבעים שמסומנים "יש במלאי" מופיעים ללקוחות בחנות.</p>
+        </div>
+        <ul class="color-list" id="colorList"></ul>
+        <form class="color-add" id="colorAdd">
+          <h3>צבע חדש</h3>
+          <div class="color-add-row">
+            <input type="color" name="hex" value="#ff7a1a" aria-label="גוון" />
+            <input name="name" placeholder="שם הצבע (למשל: כחול שמיים)" maxlength="40" required aria-label="שם הצבע" />
+            <button class="btn btn-primary btn-sm" type="submit">הוספה</button>
+          </div>
+        </form>
+        <div class="usage" id="usage"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="panel" id="panel-settings" hidden>
+        <div class="panel-head"><h2>הגדרות</h2></div>
+        <form class="card-form" id="pwForm">
+          <h3>החלפת סיסמה</h3>
+          <label>סיסמה חדשה<input type="password" name="pw" minlength="8" autocomplete="new-password" required /></label>
+          <label>שוב, ליתר ביטחון<input type="password" name="pw2" minlength="8" autocomplete="new-password" required /></label>
+          <p class="form-error" id="pwError" role="alert" hidden></p>
+          <button class="btn btn-primary btn-sm" type="submit">שמירה</button>
+        </form>
+        <div class="card-form">
+          <h3>יציאה</h3>
+          <p>יוצאים מהחשבון במכשיר הזה.</p>
+          <button class="btn btn-ghost btn-sm" id="logout">יציאה</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/admin.js"></script>
+</body>
+</html>

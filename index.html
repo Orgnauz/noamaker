@@ -221,6 +221,12 @@
     </div>
     <div class="drawer-body">
       <ul class="cart-list" id="cartList"></ul>
+      <div class="order-done" id="orderDone" hidden>
+        <img src="/assets/characters/noam-bike.webp" alt="" aria-hidden="true" />
+        <h3>תודה! ההזמנה <span id="doneNo"></span> אצל נועם 🧡</h3>
+        <p>נועם יאשר בוואטסאפ, ואז משלמים ב<strong>פייבוקס יאנג</strong>. אם וואטסאפ לא נפתח, <a id="doneWa" target="_blank" rel="noopener">לחצו כאן</a>.</p>
+        <button class="btn btn-ghost btn-sm" id="doneClose">חזרה לחנות</button>
+      </div>
       <div class="cart-empty" id="cartEmpty">
         <img src="/assets/characters/noam-wave.webp" alt="" aria-hidden="true" />
         <p>הסל עדיין ריק.<br />בואו נמצא משהו מגניב!</p>
@@ -232,7 +238,7 @@
         <label>שם מלא<input name="name" required autocomplete="name" /></label>
         <label>כתובת בקיבוץ (שכונה / מספר בית)<input name="address" required autocomplete="street-address" /></label>
         <label>טלפון<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" /></label>
-        <label>הערות (צבע מועדף, מתנה, וכו')<textarea name="notes" rows="2"></textarea></label>
+        <label>הערות (מתנה, שעה נוחה למסירה, וכו')<textarea name="notes" rows="2"></textarea></label>
         <p class="form-error" id="formError" role="alert" hidden></p>
       </form>
     </div>
@@ -252,6 +258,23 @@
     <span class="cart-bar-label">לסל שלי</span>
     <strong class="cart-bar-total" id="cartBarTotal">0 ₪</strong>
   </button>
+
+  <!-- color picker -->
+  <div class="picker-backdrop" id="pickerBackdrop" hidden></div>
+  <div class="picker" id="picker" role="dialog" aria-modal="true" aria-labelledby="pickerTitle" hidden>
+    <span class="drawer-handle" aria-hidden="true"></span>
+    <div class="picker-head">
+      <img class="picker-thumb" id="pickerThumb" alt="" />
+      <div>
+        <h2 id="pickerTitle">באיזה צבע להדפיס?</h2>
+        <p class="picker-name" id="pickerName"></p>
+      </div>
+      <button class="icon-btn" id="pickerClose" aria-label="סגירה">✕</button>
+    </div>
+    <div class="swatches" id="swatches" role="radiogroup" aria-label="צבעים זמינים בסדנה"></div>
+    <p class="picker-note">אלה הצבעים שיש לנועם בסדנה עכשיו.</p>
+    <button class="btn btn-primary picker-add" id="pickerAdd" disabled>בחרו צבע</button>
+  </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

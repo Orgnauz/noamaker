@@ -19,3 +19,10 @@ export const CATEGORIES = [
   { id: 'fidget',   label: "לילדים: פידג'טים",   emoji: '🌀', art: '/assets/categories/fidget.webp' },
   { id: 'flexi',    label: 'לילדים: דמויות זזות', emoji: '🐉', art: '/assets/categories/flexi.webp' },
 ];
+
+// Supabase (orders + workshop colors). The publishable key is safe to ship in the browser;
+// access is enforced by Row Level Security in the database.
+export const SUPABASE = {
+  url: 'https://ebztdhtujhoowguuhduu.supabase.co',
+  key: 'sb_publishable_NxKMVyiAlcQl2BdOzOrBzw_aKEECsAL',
+};

@@ -12,6 +12,7 @@
     "photo-prompts": "python scripts/build-photo-prompts.py"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "gsap": "^3.13.0"
   },
   "devDependencies": {
