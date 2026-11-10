@@ -5,9 +5,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 90,
-  "printHours": 8.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-001.webp"
  },
  {
@@ -16,9 +13,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 115,
-  "printHours": 9.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-002.webp"
  },
  {
@@ -27,9 +21,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 65,
-  "printHours": 3.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-003.webp"
  },
  {
@@ -38,9 +29,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 65,
-  "printHours": 3.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-004.webp"
  },
  {
@@ -49,9 +37,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 95,
-  "printHours": 6.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-005.webp"
  },
  {
@@ -60,9 +45,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 30,
-  "printHours": 1.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-006.webp"
  },
  {
@@ -71,9 +53,6 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 125,
-  "printHours": 12.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-007.webp"
  },
  {
@@ -82,9 +61,6 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 85,
-  "printHours": 6.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-008.webp"
  },
  {
@@ -93,9 +69,6 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 80,
-  "printHours": 7.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-009.webp"
  },
  {
@@ -104,9 +77,6 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 95,
-  "printHours": 5.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-010.webp"
  },
  {
@@ -115,9 +85,6 @@
   "subcategory": "תכשיטים ואקססוריז",
   "category": "jewelry",
   "price": 70,
-  "printHours": 3.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-011.webp"
  },
  {
@@ -126,9 +93,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 40,
-  "printHours": 3.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-012.webp"
  },
  {
@@ -137,9 +101,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 45,
-  "printHours": 4.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-013.webp"
  },
  {
@@ -148,9 +109,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 40,
-  "printHours": 1.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-014.webp"
  },
  {
@@ -159,9 +117,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 85,
-  "printHours": 10.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-015.webp"
  },
  {
@@ -170,9 +125,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 55,
-  "printHours": 3.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-016.webp"
  },
  {
@@ -181,9 +133,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 190,
-  "printHours": 16.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-017.webp"
  },
  {
@@ -192,9 +141,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 75,
-  "printHours": 8.3,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-018.webp"
  },
  {
@@ -203,9 +149,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 70,
-  "printHours": 3.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-019.webp"
  },
  {
@@ -214,9 +157,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 20,
-  "printHours": 0.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-020.webp"
  },
  {
@@ -225,9 +165,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 290,
-  "printHours": 18.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-021.webp"
  },
  {
@@ -236,9 +173,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 50,
-  "printHours": 3.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-022.webp"
  },
  {
@@ -247,9 +181,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 75,
-  "printHours": 3.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-023.webp"
  },
  {
@@ -258,9 +189,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 25,
-  "printHours": 0.8,
-  "license": "CC0",
-  "needsCommercialLicense": false,
   "image": "/assets/products/ORG-024.webp"
  },
  {
@@ -269,9 +197,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 90,
-  "printHours": 4.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-025.webp"
  },
  {
@@ -280,9 +205,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 70,
-  "printHours": 4.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-026.webp"
  },
  {
@@ -291,9 +213,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 80,
-  "printHours": 6.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-027.webp"
  },
  {
@@ -302,9 +221,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 160,
-  "printHours": 13.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-028.webp"
  },
  {
@@ -313,9 +229,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 40,
-  "printHours": 4.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-030.webp"
  },
  {
@@ -324,9 +237,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 150,
-  "printHours": 9.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-031.webp"
  },
  {
@@ -335,9 +245,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 50,
-  "printHours": 4.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-033.webp"
  },
  {
@@ -346,9 +253,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 20,
-  "printHours": 0.6,
-  "license": "Standard Digital File License - Community Use",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-034.webp"
  },
  {
@@ -357,9 +261,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 85,
-  "printHours": 10.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-035.webp"
  },
  {
@@ -368,9 +269,6 @@
   "subcategory": "שלטים ושונות",
   "category": "home",
   "price": 65,
-  "printHours": 6.3,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-036.webp"
  },
  {
@@ -379,9 +277,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 85,
-  "printHours": 8.4,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-038.webp"
  },
  {
@@ -390,9 +285,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 105,
-  "printHours": 15.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-039.webp"
  },
  {
@@ -401,9 +293,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 25,
-  "printHours": 0.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-040.webp"
  },
  {
@@ -412,9 +301,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 80,
-  "printHours": 4.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-041.webp"
  },
  {
@@ -423,9 +309,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 160,
-  "printHours": 13.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-042.webp"
  },
  {
@@ -434,9 +317,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 75,
-  "printHours": 18.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-044.webp"
  },
  {
@@ -445,9 +325,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 60,
-  "printHours": 6.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-045.webp"
  },
  {
@@ -456,9 +333,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 160,
-  "printHours": 7.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-046.webp"
  },
  {
@@ -467,9 +341,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 85,
-  "printHours": 5.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-047.webp"
  },
  {
@@ -478,9 +349,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 110,
-  "printHours": 6.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-048.webp"
  },
  {
@@ -489,9 +357,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 85,
-  "printHours": 5.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-049.webp"
  },
  {
@@ -500,9 +365,6 @@
   "subcategory": "שלטים ושונות",
   "category": "home",
   "price": 40,
-  "printHours": 2.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-050.webp"
  },
  {
@@ -511,9 +373,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 110,
-  "printHours": 5.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-051.webp"
  },
  {
@@ -522,9 +381,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 85,
-  "printHours": 5.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-052.webp"
  },
  {
@@ -533,9 +389,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 85,
-  "printHours": 8.0,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-053.webp"
  },
  {
@@ -544,9 +397,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 30,
-  "printHours": 1.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-054.webp"
  },
  {
@@ -555,9 +405,6 @@
   "subcategory": "כניסה ומפתחות",
   "category": "entrance",
   "price": 95,
-  "printHours": 6.4,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-057.webp"
  },
  {
@@ -566,9 +413,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 4.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-058.webp"
  },
  {
@@ -577,9 +421,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 35,
-  "printHours": 3.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-059.webp"
  },
  {
@@ -588,9 +429,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 60,
-  "printHours": 8.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-060.webp"
  },
  {
@@ -599,9 +437,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 70,
-  "printHours": 9.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-061.webp"
  },
  {
@@ -610,9 +445,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 40,
-  "printHours": 3.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-062.webp"
  },
  {
@@ -621,9 +453,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 65,
-  "printHours": 9.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-063.webp"
  },
  {
@@ -632,9 +461,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 70,
-  "printHours": 11.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-065.webp"
  },
  {
@@ -643,9 +469,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 4.2,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-067.webp"
  },
  {
@@ -654,9 +477,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 55,
-  "printHours": 4.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-068.webp"
  },
  {
@@ -665,9 +485,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 40,
-  "printHours": 3.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-069.webp"
  },
  {
@@ -676,9 +493,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 40,
-  "printHours": 3.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-070.webp"
  },
  {
@@ -687,9 +501,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 90,
-  "printHours": 20.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-071.webp"
  },
  {
@@ -698,9 +509,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 70,
-  "printHours": 12.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-072.webp"
  },
  {
@@ -709,9 +517,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 30,
-  "printHours": 1.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-073.webp"
  },
  {
@@ -720,9 +525,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 35,
-  "printHours": 2.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-074.webp"
  },
  {
@@ -731,9 +533,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 70,
-  "printHours": 6.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-075.webp"
  },
  {
@@ -742,9 +541,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 50,
-  "printHours": 4.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-076.webp"
  },
  {
@@ -753,9 +549,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 40,
-  "printHours": 3.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-077.webp"
  },
  {
@@ -764,9 +557,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 35,
-  "printHours": 2.2,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-078.webp"
  },
  {
@@ -775,9 +565,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 35,
-  "printHours": 2.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-079.webp"
  },
  {
@@ -786,9 +573,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 30,
-  "printHours": 1.6,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-080.webp"
  },
  {
@@ -797,9 +581,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 30,
-  "printHours": 1.2,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-081.webp"
  },
  {
@@ -808,9 +589,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 1.0,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-082.webp"
  },
  {
@@ -819,9 +597,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 2.8,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-083.webp"
  },
  {
@@ -830,9 +605,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 70,
-  "printHours": 5.8,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-084.webp"
  },
  {
@@ -841,9 +613,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 45,
-  "printHours": 2.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-085.webp"
  },
  {
@@ -852,9 +621,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 70,
-  "printHours": 2.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-086.webp"
  },
  {
@@ -863,9 +629,6 @@
   "subcategory": "מדפים ומתלים",
   "category": "entrance",
   "price": 95,
-  "printHours": 8.1,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-087.webp"
  },
  {
@@ -874,9 +637,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 65,
-  "printHours": 2.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-089.webp"
  },
  {
@@ -885,9 +645,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 45,
-  "printHours": 2.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-090.webp"
  },
  {
@@ -896,9 +653,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 175,
-  "printHours": 9.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-091.webp"
  },
  {
@@ -907,9 +661,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 45,
-  "printHours": 3.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-092.webp"
  },
  {
@@ -918,9 +669,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 60,
-  "printHours": 7.2,
-  "license": "Standard Digital File License - Community Use",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-093.webp"
  },
  {
@@ -929,9 +677,6 @@
   "subcategory": "דמויות מפרקיות",
   "category": "flexi",
   "price": 30,
-  "printHours": 2.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-094.webp"
  },
  {
@@ -940,9 +685,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 30,
-  "printHours": 1.3,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-095.webp"
  },
  {
@@ -951,9 +693,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 0.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-096.webp"
  },
  {
@@ -962,9 +701,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 3.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-097.webp"
  },
  {
@@ -973,9 +709,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 170,
-  "printHours": 14.2,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-098.webp"
  },
  {
@@ -984,9 +717,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 85,
-  "printHours": 8.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-099.webp"
  },
  {
@@ -995,9 +725,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 120,
-  "printHours": 16.2,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-100.webp"
  },
  {
@@ -1006,9 +733,6 @@
   "subcategory": "קערות ומגשים",
   "category": "home",
   "price": 25,
-  "printHours": 0.7,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-101.webp"
  },
  {
@@ -1017,9 +741,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 85,
-  "printHours": 7.2,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-102.webp"
  },
  {
@@ -1028,9 +749,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 140,
-  "printHours": 18.9,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-103.webp"
  },
  {
@@ -1039,9 +757,6 @@
   "subcategory": "שלטים ושונות",
   "category": "home",
   "price": 45,
-  "printHours": 3.3,
-  "license": "MakerWorld Exclusive License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-104.webp"
  },
  {
@@ -1050,9 +765,6 @@
   "subcategory": "עיצוב ואגרטלים",
   "category": "home",
   "price": 95,
-  "printHours": 8.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-105.webp"
  },
  {
@@ -1061,9 +773,6 @@
   "subcategory": "אמבטיה",
   "category": "bath",
   "price": 150,
-  "printHours": 26.4,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-106.webp"
  },
  {
@@ -1072,9 +781,6 @@
   "subcategory": "מטבח",
   "category": "kitchen",
   "price": 110,
-  "printHours": 11.0,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-107.webp"
  },
  {
@@ -1083,9 +789,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 45,
-  "printHours": 3.5,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-108.webp"
  },
  {
@@ -1094,9 +797,6 @@
   "subcategory": "צעצועי פידג'ט",
   "category": "fidget",
   "price": 25,
-  "printHours": 0.8,
-  "license": "Standard Digital File License",
-  "needsCommercialLicense": true,
   "image": "/assets/products/ORG-109.webp"
  }
 ]

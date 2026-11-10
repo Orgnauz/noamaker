@@ -65,8 +65,8 @@ for r in ws.iter_rows(min_row=2, values_only=True):
               "New camera angle, background and lighting – do not copy the reference photo's composition.")
     rows.append({'sku': sku, 'file': f'public/assets/products/{sku}.webp', 'name_he': p['name'], 'name_en': en,
                  'category': p['subcategory'], 'reference_image': ref, 'color': color or 'מקורי',
-                 'license': p['license'],
-                 'commercial_license_needed': 'כן' if p['needsCommercialLicense'] else 'לא',
+                 'license': (lic := r[col['רישיון (MakerWorld)']] or ''),
+                 'commercial_license_needed': 'כן' if lic != 'CC0' else 'לא',
                  'prompt': prompt})
 
 with open(ROOT / 'docs' / 'product-photo-prompts.csv', 'w', newline='', encoding='utf-8-sig') as f:

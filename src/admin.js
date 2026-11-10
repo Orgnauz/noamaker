@@ -77,6 +77,28 @@ $('.a-tabs').addEventListener('click', (e) => {
   if (b.dataset.tab === 'inventory') renderInventory();
 });
 
+/* ================= WORKSHOP DATA (admin only) ================= */
+let workshop = {}; // sku -> { makerworld_url, grams, print_hours, profile, plates }
+async function loadWorkshop() {
+  const { data, error } = await sb.from('product_workshop').select('sku,makerworld_url,grams,print_hours,profile,plates');
+  if (!error) workshop = Object.fromEntries(data.map((r) => [r.sku, r]));
+}
+const fmtG = (g) => g >= 1000 ? `${(g / 1000).toLocaleString('he-IL', { maximumFractionDigits: 2 })} ק״ג` : `${Math.round(g).toLocaleString('he-IL')} ג׳`;
+function fmtH(h) {
+  const m = Math.round(h * 60);
+  const hh = Math.floor(m / 60), mm = m % 60;
+  return hh ? `${hh}:${String(mm).padStart(2, '0')} שע׳` : `${mm} דק׳`;
+}
+function orderNeeds(o) {
+  let g = 0, h = 0, missing = 0;
+  o.order_items.forEach((i) => {
+    const w = workshop[i.sku];
+    if (!w || w.grams == null) { missing++; return; }
+    g += Number(w.grams) * i.qty; h += Number(w.print_hours || 0) * i.qty;
+  });
+  return { g, h, missing };
+}
+
 /* ================= ORDERS ================= */
 let orders = [];
 let filter = 'open';
@@ -146,13 +168,28 @@ function orderCard(o) {
     </div>
 
     <ul class="o-items">
-      ${o.order_items.map((i) => `
+      ${o.order_items.map((i) => {
+        const w = workshop[i.sku];
+        const spec = w ? `
+          <span class="i-spec">
+            ${w.grams != null ? `<span title="חומר">⚖️ ${fmtG(w.grams * i.qty)}${i.qty > 1 ? ` <small>(${fmtG(w.grams)} ליח׳)</small>` : ''}</span>` : ''}
+            ${w.print_hours != null ? `<span title="זמן הדפסה">⏱️ ${fmtH(w.print_hours * i.qty)}${i.qty > 1 ? ` <small>(${fmtH(w.print_hours)} ליח׳)</small>` : ''}</span>` : ''}
+            ${w.plates > 1 ? `<span title="פלטות">🧩 ${w.plates} פלטות</span>` : ''}
+            ${w.makerworld_url ? `<a href="${esc(w.makerworld_url)}" target="_blank" rel="noopener noreferrer">פתיחה ב-MakerWorld ↗</a>` : ''}
+          </span>` : '';
+        return `
         <li>
           <i class="dot" style="--c:${esc(i.color_hex || 'transparent')}" title="${esc(i.color_name || 'ללא צבע')}"></i>
           <span class="i-name">${esc(i.name)} <small>${esc(i.sku)}</small></span>
           <span class="i-color">${esc(i.color_name || '—')}</span>
           <span class="i-qty">×${i.qty}</span>
-        </li>`).join('')}
+          ${spec}
+        </li>`;
+      }).join('')}
+      ${(() => {
+        const n = orderNeeds(o);
+        return n.g ? `<li class="i-total"><span>סה״כ להדפסה</span><b>⚖️ ${fmtG(n.g)}</b><b>⏱️ ${fmtH(n.h)}</b>${n.missing ? `<small>(${n.missing} פריטים בלי נתונים)</small>` : ''}</li>` : '';
+      })()}
     </ul>
     ${o.notes ? `<p class="o-notes">📝 ${esc(o.notes)}</p>` : ''}
 
@@ -278,12 +315,13 @@ function renderUsage() {
   const need = {};
   orders.filter((o) => OPEN.includes(o.status) && o.status !== 'ready').forEach((o) => o.order_items.forEach((i) => {
     const k = i.color_name || 'ללא צבע';
-    need[k] = need[k] || { hex: i.color_hex, qty: 0 };
+    need[k] = need[k] || { hex: i.color_hex, qty: 0, g: 0 };
     need[k].qty += i.qty;
+    need[k].g += Number(workshop[i.sku]?.grams || 0) * i.qty;
   }));
   const rows = Object.entries(need).sort((a, b) => b[1].qty - a[1].qty);
   $('#usage').innerHTML = `<h3>מה צריך להדפיס (הזמנות חדשות ובהדפסה)</h3>` + (rows.length
-    ? `<ul>${rows.map(([n, v]) => `<li><i class="dot" style="--c:${esc(v.hex || 'transparent')}"></i>${esc(n)}<b>${v.qty} יח׳</b></li>`).join('')}</ul>`
+    ? `<ul>${rows.map(([n, v]) => `<li><i class="dot" style="--c:${esc(v.hex || 'transparent')}"></i>${esc(n)}<b>${v.qty} יח׳${v.g ? ` · ${fmtG(v.g)}` : ''}</b></li>`).join('')}</ul>`
     : '<p class="muted">אין כרגע מה להדפיס.</p>');
 }
 
@@ -339,6 +377,7 @@ function invRow(p) {
     <div class="inv-info">
       <strong>${esc(p.name)}</strong>
       <small>${esc(p.sku)} · ${esc(p.subcategory)} · ${ils(p.price)}</small>
+      ${workshop[p.sku] ? `<small class="inv-spec">⚖️ ${fmtG(workshop[p.sku].grams || 0)} · ⏱️ ${fmtH(workshop[p.sku].print_hours || 0)}${workshop[p.sku].makerworld_url ? ` · <a href="${esc(workshop[p.sku].makerworld_url)}" target="_blank" rel="noopener noreferrer">MakerWorld ↗</a>` : ''}</small>` : ''}
       <button class="inv-colors" data-edit-colors aria-label="עריכת צבעים עבור ${esc(p.name)}">${chips}<span class="edit">עריכה</span></button>
       ${noStock ? '<span class="due late">אף צבע לא במלאי – לא ניתן להזמין</span>' : ''}
     </div>
@@ -429,7 +468,8 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cp.hidd
 let channel;
 async function enterApp() {
   $('#login').hidden = true; $('#app').hidden = false;
-  await Promise.all([loadOrders(), loadColors(), loadSettings()]);
+  await Promise.all([loadWorkshop(), loadColors(), loadSettings()]);
+  await loadOrders();
   // live: new orders show up without refreshing
   channel?.unsubscribe();
   channel = sb.channel('orders-live')
