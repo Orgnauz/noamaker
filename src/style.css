@@ -630,3 +630,5 @@ img.is-loaded { opacity: 1; }
 
 /* toast stays clear of an open sheet (cart / picker) */
 @media (max-width: 760px) { body.lock .toast { bottom: auto; top: calc(14px + env(safe-area-inset-top, 0px)); } }
+
+.add:disabled { background: #c9cbd8; color: var(--white); box-shadow: 0 3px 0 #9da1b8; cursor: not-allowed; }

@@ -34,6 +34,7 @@
       </a>
       <nav class="a-tabs" role="tablist" aria-label="אזורי ניהול">
         <button role="tab" class="a-tab active" data-tab="orders" aria-selected="true">הזמנות <b id="openCount">0</b></button>
+        <button role="tab" class="a-tab" data-tab="inventory" aria-selected="false">מלאי</button>
         <button role="tab" class="a-tab" data-tab="colors" aria-selected="false">צבעים</button>
         <button role="tab" class="a-tab" data-tab="settings" aria-selected="false">הגדרות</button>
       </nav>
@@ -44,6 +45,23 @@
       <section class="panel" id="panel-orders">
         <div class="filters" id="filters" role="group" aria-label="סינון לפי סטטוס"></div>
         <div class="orders" id="orders" aria-live="polite"></div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section class="panel" id="panel-inventory" hidden>
+        <div class="panel-head">
+          <h2>מלאי מוצרים</h2>
+          <p>בוחרים עד 3 צבעים לכל מוצר (בלי בחירה – כל הצבעים שיש במלאי), ומסתירים מוצרים מהחנות.</p>
+        </div>
+        <div class="inv-tools">
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <input type="search" id="invSearch" placeholder="חיפוש לפי שם או מק״ט…" />
+          </label>
+          <select id="invCat" aria-label="קטגוריה"></select>
+        </div>
+        <div class="filters" id="invFilters" role="group" aria-label="סינון מלאי"></div>
+        <ul class="inv-list" id="invList"></ul>
       </section>
 
       <!-- COLORS -->
@@ -81,6 +99,26 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <!-- color chooser for a product -->
+  <div class="picker-backdrop" id="cpBackdrop" hidden></div>
+  <div class="picker" id="cp" role="dialog" aria-modal="true" aria-labelledby="cpTitle" hidden>
+    <span class="drawer-handle" aria-hidden="true"></span>
+    <div class="picker-head">
+      <img class="picker-thumb" id="cpThumb" alt="" />
+      <div>
+        <h2 id="cpTitle">צבעים למוצר</h2>
+        <p class="picker-name" id="cpName"></p>
+      </div>
+      <button class="icon-btn" id="cpClose" aria-label="סגירה">✕</button>
+    </div>
+    <div class="swatches" id="cpSwatches" role="group" aria-label="בחירת עד 3 צבעים"></div>
+    <p class="picker-note" id="cpNote"></p>
+    <div class="cp-actions">
+      <button class="btn btn-ghost btn-sm" id="cpAll">כל הצבעים</button>
+      <button class="btn btn-primary" id="cpSave">שמירה</button>
+    </div>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

@@ -14,6 +14,13 @@ export async function fetchColors({ includeOutOfStock = false } = {}) {
   return data;
 }
 
+/** Per-product store settings set in the admin inventory page. */
+export async function fetchProductSettings() {
+  const { data, error } = await sb.from('product_settings').select('sku,hidden,color_ids');
+  if (error) throw error;
+  return data;
+}
+
 export const ORDER_STATUS = [
   { id: 'new', label: 'חדשה', emoji: '📥' },
   { id: 'printing', label: 'בהדפסה', emoji: '🖨️' },

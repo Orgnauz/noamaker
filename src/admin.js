@@ -1,6 +1,8 @@
 import './style.css';
 import './admin.css';
-import { sb, fetchColors, ORDER_STATUS } from './supabase.js';
+import { sb, fetchColors, fetchProductSettings, ORDER_STATUS } from './supabase.js';
+import products from './products.json';
+import { CATEGORIES } from './config.js';
 
 const ADMIN_EMAIL = 'admin@noamaker.app'; // shared workshop account – only the password is secret
 
@@ -72,6 +74,7 @@ $('.a-tabs').addEventListener('click', (e) => {
   $$('.a-tab').forEach((t) => { const on = t === b; t.classList.toggle('active', on); t.setAttribute('aria-selected', on); });
   $$('.panel').forEach((p) => (p.hidden = p.id !== `panel-${b.dataset.tab}`));
   if (b.dataset.tab === 'colors') renderUsage();
+  if (b.dataset.tab === 'inventory') renderInventory();
 });
 
 /* ================= ORDERS ================= */
@@ -226,6 +229,7 @@ async function loadColors() {
   renderColors();
 }
 function renderColors() {
+  if (!$('#panel-inventory').hidden) renderInventory();
   $('#colorList').innerHTML = colors.map((c) => `
     <li class="color-row ${c.in_stock ? '' : 'out'}" data-id="${c.id}">
       <label class="color-pick" style="--c:${esc(c.hex)}"><input type="color" data-cfield="hex" value="${esc(c.hex)}" aria-label="גוון של ${esc(c.name)}" /></label>
@@ -283,11 +287,149 @@ function renderUsage() {
     : '<p class="muted">אין כרגע מה להדפיס.</p>');
 }
 
+/* ================= INVENTORY ================= */
+const MAX_COLORS = 3;
+let settings = {};           // sku -> { sku, hidden, color_ids }
+const inv = { q: '', cat: 'all', show: 'all' };
+const setOf = (sku) => settings[sku] || { sku, hidden: false, color_ids: [] };
+const colorObj = (id) => colors.find((c) => String(c.id) === String(id));
+
+async function loadSettings() {
+  try { settings = Object.fromEntries((await fetchProductSettings()).map((r) => [r.sku, r])); }
+  catch (e) { toast('לא הצלחתי לטעון הגדרות מוצרים'); }
+}
+
+function invFiltered() {
+  const q = inv.q.trim();
+  return products.filter((p) => {
+    const st = setOf(p.sku);
+    if (inv.cat !== 'all' && p.category !== inv.cat) return false;
+    if (inv.show === 'shown' && st.hidden) return false;
+    if (inv.show === 'hidden' && !st.hidden) return false;
+    if (inv.show === 'custom' && !st.color_ids.length) return false;
+    if (inv.show === 'nocolor' && !(st.color_ids.length && !st.color_ids.some((id) => colorObj(id)?.in_stock))) return false;
+    return !q || p.name.includes(q) || p.sku.toLowerCase().includes(q.toLowerCase());
+  });
+}
+
+function renderInvFilters() {
+  const all = products.map((p) => setOf(p.sku));
+  const n = {
+    all: products.length,
+    shown: all.filter((s) => !s.hidden).length,
+    hidden: all.filter((s) => s.hidden).length,
+    custom: all.filter((s) => s.color_ids.length).length,
+    nocolor: all.filter((s) => s.color_ids.length && !s.color_ids.some((id) => colorObj(id)?.in_stock)).length,
+  };
+  const opts = [['all', 'הכל'], ['shown', 'מוצגים'], ['hidden', 'מוסתרים'], ['custom', 'עם צבעים קבועים'], ['nocolor', 'אין צבע במלאי']];
+  $('#invFilters').innerHTML = opts.map(([id, l]) =>
+    `<button class="chip ${inv.show === id ? 'active' : ''} ${id === 'nocolor' && n.nocolor ? 'warn' : ''}" data-show="${id}" aria-pressed="${inv.show === id}">${l}<b>${n[id]}</b></button>`).join('');
+}
+
+function invRow(p) {
+  const st = setOf(p.sku);
+  const chosen = st.color_ids.map(colorObj).filter(Boolean);
+  const noStock = chosen.length && !chosen.some((c) => c.in_stock);
+  const chips = chosen.length
+    ? chosen.map((c) => `<span class="cchip ${c.in_stock ? '' : 'out'}" title="${c.in_stock ? '' : 'נגמר במלאי'}"><i class="dot" style="--c:${esc(c.hex)}"></i>${esc(c.name)}</span>`).join('')
+    : '<span class="cchip all">כל הצבעים</span>';
+  return `
+  <li class="inv-row ${st.hidden ? 'is-hidden' : ''}" data-sku="${esc(p.sku)}">
+    <img class="inv-thumb" src="${esc(p.image || '')}" alt="" loading="lazy" />
+    <div class="inv-info">
+      <strong>${esc(p.name)}</strong>
+      <small>${esc(p.sku)} · ${esc(p.subcategory)} · ${ils(p.price)}</small>
+      <button class="inv-colors" data-edit-colors aria-label="עריכת צבעים עבור ${esc(p.name)}">${chips}<span class="edit">עריכה</span></button>
+      ${noStock ? '<span class="due late">אף צבע לא במלאי – לא ניתן להזמין</span>' : ''}
+    </div>
+    <label class="switch small inv-vis">
+      <input type="checkbox" data-visible ${st.hidden ? '' : 'checked'} />
+      <span>${st.hidden ? 'מוסתר' : 'בחנות'}</span>
+    </label>
+  </li>`;
+}
+
+function renderInventory() {
+  if (!$('#invCat').options.length) {
+    $('#invCat').innerHTML = CATEGORIES.map((c) => `<option value="${c.id}">${c.id === 'all' ? 'כל הקטגוריות' : c.label}</option>`).join('');
+  }
+  renderInvFilters();
+  const list = invFiltered();
+  $('#invList').innerHTML = list.length ? list.map(invRow).join('') : '<p class="empty-note">אין מוצרים שמתאימים לסינון.</p>';
+}
+
+async function saveSetting(sku, patch, msg) {
+  const prev = setOf(sku);
+  const next = { ...prev, ...patch, sku };
+  settings[sku] = next; renderInventory();
+  const { error } = await sb.from('product_settings').upsert({ sku, hidden: next.hidden, color_ids: next.color_ids }, { onConflict: 'sku' });
+  if (error) { settings[sku] = prev; renderInventory(); toast('לא נשמר – ' + error.message); return false; }
+  toast(msg); return true;
+}
+
+$('#invSearch').addEventListener('input', (e) => { inv.q = e.target.value; renderInventory(); });
+$('#invCat').addEventListener('change', (e) => { inv.cat = e.target.value; renderInventory(); });
+$('#invFilters').addEventListener('click', (e) => { const b = e.target.closest('[data-show]'); if (b) { inv.show = b.dataset.show; renderInventory(); } });
+$('#invList').addEventListener('change', (e) => {
+  const el = e.target.closest('[data-visible]'); if (!el) return;
+  const sku = el.closest('.inv-row').dataset.sku;
+  saveSetting(sku, { hidden: !el.checked }, el.checked ? 'מוצג בחנות ✔' : 'הוסתר מהחנות');
+});
+$('#invList').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-edit-colors]'); if (b) openColorChooser(b.closest('.inv-row').dataset.sku);
+});
+
+/* product color chooser (up to 3) */
+const cp = $('#cp'), cpBackdrop = $('#cpBackdrop');
+let cpState = { sku: null, ids: [] };
+function renderChooser() {
+  const ids = cpState.ids.map(String);
+  $('#cpSwatches').innerHTML = colors.map((c) => {
+    const on = ids.includes(String(c.id));
+    const full = !on && ids.length >= MAX_COLORS;
+    return `<button class="swatch ${c.in_stock ? '' : 'is-out'}" aria-pressed="${on}" aria-checked="${on}" data-cpc="${c.id}" ${full ? 'disabled' : ''} style="--c:${esc(c.hex)}">
+      <i></i><span>${esc(c.name)}</span>${c.in_stock ? '' : '<small>נגמר</small>'}${on ? `<em>${ids.indexOf(String(c.id)) + 1}</em>` : ''}
+    </button>`;
+  }).join('');
+  $('#cpNote').textContent = ids.length
+    ? `נבחרו ${ids.length} מתוך ${MAX_COLORS}. הלקוחות יראו רק את הצבעים האלה (כשהם במלאי).`
+    : 'לא נבחרו צבעים – הלקוחות יראו את כל הצבעים שיש במלאי.';
+}
+function openColorChooser(sku) {
+  const p = products.find((x) => x.sku === sku);
+  cpState = { sku, ids: [...setOf(sku).color_ids] };
+  $('#cpName').textContent = `${p.name} · ${p.sku}`;
+  $('#cpThumb').src = p.image || '';
+  renderChooser();
+  cpBackdrop.hidden = false; cp.hidden = false;
+  requestAnimationFrame(() => cp.classList.add('open'));
+  document.body.classList.add('lock');
+}
+function closeChooser() {
+  cp.classList.remove('open'); document.body.classList.remove('lock');
+  setTimeout(() => { cp.hidden = true; cpBackdrop.hidden = true; }, 220);
+}
+$('#cpSwatches').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-cpc]'); if (!b || b.disabled) return;
+  const id = Number(b.dataset.cpc);
+  const i = cpState.ids.map(Number).indexOf(id);
+  if (i >= 0) cpState.ids.splice(i, 1); else if (cpState.ids.length < MAX_COLORS) cpState.ids.push(id);
+  renderChooser();
+});
+$('#cpAll').addEventListener('click', () => { cpState.ids = []; renderChooser(); });
+$('#cpSave').addEventListener('click', async () => {
+  const ok = await saveSetting(cpState.sku, { color_ids: cpState.ids.map(Number) }, cpState.ids.length ? 'הצבעים נשמרו ✔' : 'כל הצבעים זמינים למוצר ✔');
+  if (ok) closeChooser();
+});
+$('#cpClose').addEventListener('click', closeChooser);
+cpBackdrop.addEventListener('click', closeChooser);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !cp.hidden) closeChooser(); });
+
 /* ================= BOOT ================= */
 let channel;
 async function enterApp() {
   $('#login').hidden = true; $('#app').hidden = false;
-  await Promise.all([loadOrders(), loadColors()]);
+  await Promise.all([loadOrders(), loadColors(), loadSettings()]);
   // live: new orders show up without refreshing
   channel?.unsubscribe();
   channel = sb.channel('orders-live')

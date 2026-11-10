@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import products from './products.json';
 import { STORE, CATEGORIES } from './config.js';
-import { sb, fetchColors } from './supabase.js';
+import { sb, fetchColors, fetchProductSettings } from './supabase.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,6 +59,18 @@ let cart = load();
 // workshop colors (in stock). null = not loaded / unavailable -> store works without colors
 let colors = null;
 const colorById = (id) => (colors || []).find((c) => String(c.id) === String(id));
+// per-product settings from the admin inventory page: { sku: { hidden, color_ids } }
+let settings = {};
+const isHidden = (sku) => !!settings[sku]?.hidden;
+/** in-stock colors this product can be printed in (product's own list, or every in-stock color) */
+function colorsFor(sku) {
+  if (!colors) return [];
+  const ids = settings[sku]?.color_ids || [];
+  return ids.length ? colors.filter((c) => ids.map(String).includes(String(c.id))) : colors;
+}
+/** product limited to specific colors and none of them is in stock right now */
+const outOfColor = (sku) => !!colors && (settings[sku]?.color_ids || []).length > 0 && colorsFor(sku).length === 0;
+const shown = () => products.filter((p) => !isHidden(p.sku));
 const keyOf = (sku, colorId) => `${sku}|${colorId ?? ''}`;
 const splitKey = (k) => { const [sku, colorId = ''] = k.split('|'); return { sku, colorId }; };
 
@@ -75,12 +87,12 @@ function save() {
 
 /* ---------- categories ---------- */
 function renderCats() {
-  const counts = products.reduce((m, p) => ((m[p.category] = (m[p.category] || 0) + 1), m), {});
+  const counts = shown().reduce((m, p) => ((m[p.category] = (m[p.category] || 0) + 1), m), {});
   $('#cats').innerHTML = CATEGORIES.map((c) => `
     <button class="cat ${c.id === state.cat ? 'active' : ''}" role="tab" aria-selected="${c.id === state.cat}" data-cat="${c.id}">
       <span class="cat-art"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" decoding="async" /></span>
       <span class="cat-label">${c.label}</span>
-      <span class="cat-count">${c.id === 'all' ? products.length : counts[c.id] || 0}</span>
+      <span class="cat-count">${c.id === 'all' ? shown().length : counts[c.id] || 0}</span>
     </button>`).join('');
   revealCached($('#cats'));
 }
@@ -95,7 +107,7 @@ $('#cats').addEventListener('click', (e) => {
 
 /* ---------- product grid ---------- */
 function filtered() {
-  let list = products.filter((p) =>
+  let list = shown().filter((p) =>
     (state.cat === 'all' || p.category === state.cat) &&
     (!state.q || p.name.includes(state.q) || (p.subcategory || '').includes(state.q)));
   if (state.sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
@@ -109,9 +121,11 @@ function card(p) {
     ? `<img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" data-fallback="${c.emoji}" />`
     : `<div class="ph"><img src="${c.art}" alt="" data-fallback="${c.emoji}" loading="lazy" decoding="async" /><span>תמונה בקרוב</span></div>`;
   const inCart = qtyOfSku(p.sku);
-  const dots = colors && colors.length
-    ? `<span class="mini-swatches" aria-label="${colors.length} צבעים לבחירה">${colors.slice(0, 6).map((c) => `<i style="--c:${c.hex}"></i>`).join('')}${colors.length > 6 ? `<b>+${colors.length - 6}</b>` : ''}</span>`
+  const pc = colorsFor(p.sku);
+  const dots = pc.length
+    ? `<span class="mini-swatches" aria-label="${pc.length} צבעים לבחירה">${pc.slice(0, 6).map((c) => `<i style="--c:${c.hex}"></i>`).join('')}${pc.length > 6 ? `<b>+${pc.length - 6}</b>` : ''}</span>`
     : '';
+  const sold = outOfColor(p.sku);
   return `
   <article class="card" data-sku="${p.sku}">
     <div class="card-media">${media}<span class="tag">${p.subcategory}</span></div>
@@ -121,9 +135,11 @@ function card(p) {
       ${dots}
       <div class="card-foot">
         <strong class="price">${ils(p.price)}</strong>
-        <button class="add ${inCart ? 'in' : ''}" data-add="${p.sku}" aria-label="הוספת ${p.name} לסל">
+        ${sold
+          ? '<button class="add" disabled>אזל זמנית</button>'
+          : `<button class="add ${inCart ? 'in' : ''}" data-add="${p.sku}" aria-label="הוספת ${p.name} לסל">
           ${inCart ? `בסל (${inCart}) +` : 'הוסף לסל'}
-        </button>
+        </button>`}
       </div>
     </div>
   </article>`;
@@ -148,8 +164,9 @@ $('#sort').addEventListener('change', (e) => { state.sort = e.target.value; rend
 $('#grid').addEventListener('click', (e) => {
   const b = e.target.closest('[data-add]');
   if (!b) return;
-  if (colors && colors.length) openPicker(b.dataset.add, b);
-  else addToCart(b.dataset.add, '', b);
+  const pc = colorsFor(b.dataset.add);
+  if (pc.length > 1) openPicker(b.dataset.add, b);
+  else addToCart(b.dataset.add, pc[0]?.id ?? '', b); // one color (or no color data) – add straight away
 });
 
 /* ---------- cart ---------- */
@@ -176,7 +193,7 @@ function addToCart(sku, colorId, btn) {
 const picker = $('#picker'), pickerBackdrop = $('#pickerBackdrop');
 let pick = { sku: null, colorId: null, btn: null, lastFocus: null };
 function renderSwatches() {
-  $('#swatches').innerHTML = (colors || []).map((c) => `
+  $('#swatches').innerHTML = colorsFor(pick.sku).map((c) => `
     <button class="swatch" role="radio" aria-checked="${String(c.id) === String(pick.colorId)}" data-color="${c.id}" style="--c:${c.hex}">
       <i></i><span>${esc(c.name)}</span>
     </button>`).join('');
@@ -253,17 +270,18 @@ function setLineColor(key, colorId) {
 function cartItems() {
   return Object.entries(cart)
     .map(([k, q]) => ({ key: k, ...splitKey(k), qty: q }))
-    .filter((i) => bySku[i.sku])
-    .map((i) => ({ ...bySku[i.sku], key: i.key, colorId: i.colorId, color: colorById(i.colorId), qty: i.qty }));
+    .filter((i) => bySku[i.sku] && !isHidden(i.sku))
+    .map((i) => ({ ...bySku[i.sku], key: i.key, colorId: i.colorId, color: colorsFor(i.sku).find((c) => String(c.id) === String(i.colorId)), qty: i.qty }));
 }
 
 function colorSelect(i) {
-  if (!colors || !colors.length) return '';
+  const pc = colorsFor(i.sku);
+  if (!pc.length) return '';
   return `<label class="ci-color ${i.color ? '' : 'missing'}" style="--c:${i.color?.hex || 'transparent'}">
       <i aria-hidden="true"></i>
       <select data-color-of="${esc(i.key)}" aria-label="צבע עבור ${esc(i.name)}">
         ${i.color ? '' : '<option value="" selected>בחרו צבע</option>'}
-        ${colors.map((c) => `<option value="${c.id}" ${String(c.id) === String(i.colorId) ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}
+        ${pc.map((c) => `<option value="${c.id}" ${String(c.id) === String(i.colorId) ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}
       </select>
     </label>`;
 }
@@ -337,7 +355,7 @@ $('#sendOrder').addEventListener('click', async () => {
     f.querySelector(`[name="${missing[0]}"]`).focus();
     return;
   }
-  if (colors && colors.length && items.some((i) => !i.color)) {
+  if (items.some((i) => colorsFor(i.sku).length && !i.color)) {
     err.textContent = 'נשאר לבחור צבע לכל מוצר בסל 🎨';
     err.hidden = false;
     $('#cartList .ci-color.missing select')?.focus();
@@ -467,6 +485,8 @@ renderCats();
 renderGrid();
 renderCart();
 animate();
-fetchColors()
-  .then((c) => { colors = c; renderGrid(); renderCart(); })
-  .catch((e) => console.warn('colors unavailable – store works without color choice', e));
+Promise.allSettled([fetchColors(), fetchProductSettings()]).then(([c, ps]) => {
+  if (c.status === 'fulfilled') colors = c.value; else console.warn('colors unavailable – store works without color choice', c.reason);
+  if (ps.status === 'fulfilled') settings = Object.fromEntries(ps.value.map((r) => [r.sku, r]));
+  renderCats(); renderGrid(); renderCart();
+});
